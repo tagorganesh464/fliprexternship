@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400&display=swap');
+
+body {
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+.add-user-container {
+  padding: 2rem;
+  padding-left: 30rem;
+  width: 100rem;
+}
+
+.add-user-container .form-row {
+  margin-bottom: 1.5rem;
+  padding-top: 0.5rem; /* Add top padding */
+  padding-bottom: 0.5rem; /* Add bottom padding */
+}
+
+.add-user-container .form-row:last-child {
+  margin-bottom: 0; /* Remove margin-bottom for the last form-row */
+}
+
+.add-user-container .form-row .form-label {
+  margin-bottom: 0.5rem;
+}
+
+/* .add-user-container .form-row .form-control {
+  width: 100%;
+} */
+
+.add-user-container .form-row .text-danger {
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.navi-4{
+  width: 15rem;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}

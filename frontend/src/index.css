@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Barlow Condensed', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+code{
+  font-family: 'Barlow Condensed', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace; */
+/* } */
+
+.content-container {
+  min-height: calc(100vh - 34px);
+}
+
+.footer-container {
+  position: relative;
+  left: 0;
+  bottom: 0;
+}
