@@ -13,6 +13,7 @@ import {
 } from 'mdb-react-ui-kit';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import './AddUser.css';
+import img from '../../images/photo-1684194952323-332460c595e2.avif'
 
 const AddUser = () => {
   const [error, setError] = useState('');
@@ -43,12 +44,17 @@ const AddUser = () => {
   };
 
   return (
-    <div className="add-user-container navi-6">
+    <section>
+    <div
+    className="add-user-container navi-6"
+  
+  >
+      
       <MDBContainer fluid>
         <MDBRow className="justify-content-center align-items-center m-5 navi-8">
           <MDBCol md="12">
-            <MDBCard className="navi-8">
-              <MDBCardBody className="px-4 navi-8">
+          <div className="wider-card-wrapper ">
+           
                 <h3 className="fw-bold mb-4 pb-2 pb-md-0 mb-md-5">
                   Add new employee
                 </h3>
@@ -58,36 +64,36 @@ const AddUser = () => {
                 )}
 
                 <form onSubmit={handleSubmit(formSubmit)}>
-                <div className='navi-4'> 
-                  <MDBRow>
-                    <MDBCol md="12">
-                      <MDBInput
-                        label="Employee Name"
-                        size="lg"
-                        id="username"
-                        type="text"
-                        {...register('username', {
-                          required: 'Please enter your username',
-                          minLength: {
-                            value: 4,
-                            message:
-                              'Username should be at least 4 characters long',
-                          },
-                          maxLength: {
-                            value: 10,
-                            message:
-                              'Username should not exceed 10 characters',
-                          },
-                        })}
-                      />
-                      {errors.username && (
-                        <p className="text-danger">
-                          {errors.username.message}
-                        </p>
-                      )}
-                    </MDBCol>
-                  </MDBRow>
-                  </div>
+                  <div className="wider-inputs">
+                  <div className='navi-4'> 
+  <MDBRow>
+    <MDBCol md="12">
+      <MDBInput
+        label="Employee Name"
+        size="lg"
+        id="username"
+        type="text"
+        {...register('username', {
+          required: 'Please enter your username',
+          minLength: {
+            value: 4,
+            message: 'Username should be at least 4 characters long',
+          },
+          maxLength: {
+            value: 10,
+            message: 'Username should not exceed 10 characters',
+          },
+        })}
+      />
+      {errors.username && (
+        <p className="text-danger">
+          {errors.username.message}
+        </p>
+      )}
+    </MDBCol>
+  </MDBRow>
+</div>
+
                   <div className='navi-4'>
                   <MDBRow>
                     <MDBCol md="12">
@@ -197,17 +203,19 @@ const AddUser = () => {
                     </MDBCol>
                   </MDBRow>
                   </div>
+                  </div>
 
                   <MDBBtn className="mb-4" size="lg" type="submit">
                     Submit
                   </MDBBtn>
                 </form>
-              </MDBCardBody>
-            </MDBCard>
+            
+            </div>
           </MDBCol>
         </MDBRow>
       </MDBContainer>
     </div>
+    </section>
   );
 };
 

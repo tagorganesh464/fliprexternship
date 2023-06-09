@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { loginContext } from '../../context/loginContext';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -7,33 +7,40 @@ import './login.css';
 
 function Login() {
   const navigate = useNavigate();
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const [currentUser, error, userLoginStatus, loginUser, logoutUser, role] = useContext(loginContext);
 
   const handleUserLogin = (userobj) => {
     loginUser(userobj);
   };
 
-  React.useEffect(() => {
-    if (userLoginStatus === true && role === 'admin') {
-      navigate('/add-user');
-    } else if (userLoginStatus === true) {
-      navigate('/emp-dashboard');
+  useEffect(() => {
+    if (userLoginStatus) {
+      if (role === 'admin') {
+        navigate('/add-user');
+      } else {
+        navigate('/emp-dashboard');
+      }
     }
-  }, [userLoginStatus]);
+  }, [userLoginStatus, role]);
 
   return (
+    <section>
+    <div className="new-form">
     <MDBContainer className="my-5 gradient-form">
       <MDBRow>
         <MDBCol col='6' className="mb-5">
           <div className="d-flex flex-column ms-5">
             <div className="text-center">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0NUhTeL3TV7RLd70eqM-mmcByuUD2gkkb6rDeENMeOg&s"
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
                 style={{ width: '185px' }} alt="logo" />
-              
             </div>
 
             <p>Please login to your account</p>
+
+            {error && (
+              <h1 className="text-danger">{error}</h1>
+            )}
 
             <form onSubmit={handleSubmit(handleUserLogin)}>
               <MDBInput
@@ -41,6 +48,7 @@ function Login() {
                 label='User Name'
                 id='username'
                 type='text'
+                className='white-label'
                 {...register('username', {
                   required: true,
                   minLength: 4,
@@ -54,7 +62,7 @@ function Login() {
                 <p className="text-danger">*minimum 4 letter word is required</p>
               )}
               {errors.username?.type === 'maxLength' && (
-                <p className="text-danger">*maximum 22 letter word is required</p>
+                <p className="text-danger">*maximum length is 22 letter word</p>
               )}
 
               <MDBInput
@@ -73,11 +81,8 @@ function Login() {
 
               <div className="text-center pt-1 mb-5 pb-1">
                 <MDBBtn type="submit" className="mb-4 w-100 gradient-custom-2">Login</MDBBtn>
-                
               </div>
             </form>
-
-            
           </div>
         </MDBCol>
 
@@ -95,6 +100,8 @@ function Login() {
         </MDBCol>
       </MDBRow>
     </MDBContainer>
+    </div>
+    </section>
   );
 }
 
