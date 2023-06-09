@@ -13,7 +13,9 @@ section {
   background-position: center;
   background-size: cover;
 }
-.navi-6{
+
+.add-user-container {
+  padding: 1.5rem;
   height: 600px;
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.7);
@@ -22,33 +24,6 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.add-user-container {
-  padding: 1.5rem;
-}
-
-.add-user-container .form-row {
-  margin-bottom: 1.5rem;
-  padding-top: 0.5rem; /* Add top padding */
-  padding-bottom: 0.5rem; /* Add bottom padding */
-}
-
-.add-user-container .form-row:last-child {
-  margin-bottom: 0; /* Remove margin-bottom for the last form-row */
-}
-
-.add-user-container .form-row .form-label {
-  margin-bottom: 0.5rem;
-}
-
-/* .add-user-container .form-row .form-control {
-  width: 100%;
-} */
-
-.add-user-container .form-row .text-danger {
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
 }
 
 .navi-4{
