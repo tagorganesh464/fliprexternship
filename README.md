@@ -6,4 +6,4 @@
 ### ***Step 4***: Second half of the terminal the current directory is backend folder : npm install 
 ### ***Step 5***: In first terminal current directory is in frontend ,type command : npm start 
 ### ***Step 6***: In second terminal current directory is backend, we took http server as app.js ,type command: nodemon app.js 
-### ***Step 7***:  I have chosen my admin details as username = admin and password = admin , no spaces in between , and all letters small , you can use these details for admin login
+### ***Step 7***:  I have chosen my admin details as username = ganesh and password = ganesh , no spaces in between , and all letters small , you can use these details for admin login
