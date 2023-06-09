@@ -25,6 +25,7 @@ function Login() {
   }, [userLoginStatus, role]);
 
   return (
+    <div className="login">
     <section>
     <div className="new-form">
     <MDBContainer className="my-5 gradient-form">
@@ -48,7 +49,7 @@ function Login() {
                 label='User Name'
                 id='username'
                 type='text'
-                className='white-label'
+                className='input box '
                 {...register('username', {
                   required: true,
                   minLength: 4,
@@ -102,6 +103,7 @@ function Login() {
     </MDBContainer>
     </div>
     </section>
+    </div>
   );
 }
 

@@ -1,10 +1,11 @@
 .home-container {
   position: relative;
   height: 100vh;
-  background-image: url('https://images.saymedia-content.com/.image/c_limit%2Ccs_srgb%2Cq_auto:eco%2Cw_520/MTkzOTUzODU0MDkyNjE3MjIx/particlesjs-examples.webp');
+  background: url('../../images/tzokbat_by_hellraidgr_dfjsj65-pre.jpg') no-repeat;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  padding-bottom: 10px; /* Add this line */
 }
 
 .home-content {
@@ -21,6 +22,6 @@
   bottom: 0;
   width: 100%;
   background-color: #f8f9fa;
-  padding: 20px;
+  padding: 0.2px;
   text-align: center;
 }
