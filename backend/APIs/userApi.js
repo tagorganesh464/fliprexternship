@@ -111,7 +111,7 @@ userapp.post('/user-login',expressAsyncHandler(async(request,response)=>{
    //if passwords matched
    else{
      //create a JWT token
-       let jwtToken=jwt.sign({username:userOfDB.username},'abcdef',{expiresIn:"1d"})
+       let jwtToken=jwt.sign({username:userOfDB.username},'123456789',{expiresIn:"1d"})
      //send token in response
      response.status(200).send({message:"success",token:jwtToken,user:userOfDB})
    }
