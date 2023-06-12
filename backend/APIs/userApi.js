@@ -49,6 +49,32 @@ userapp.put("/update-user",verifytoken,expressAsyncHandler(async(request,respons
       response.status(200).send({message:"user has been modified successfully"})
     
   }))
+  userapp.put("/add-users-task", verifytoken, expressAsyncHandler(async (request, response) => {
+    // Get userCollection
+    const userCollection = request.app.get("userCollection");
+    const modifiedUser = request.body;
+  
+    // Extract username and tasks from the modifiedUser object
+    const [userWithTask, tasks] = modifiedUser;
+  
+    try {
+      // Find the user document
+      const user = await userCollection.findOne({ username: userWithTask.username });
+  
+      // Update the tasks array locally
+      user.tasks = tasks;
+  
+      // Save the updated document back to the database
+      await userCollection.updateOne({ _id: user._id }, { $set: user });
+  
+      response.status(200).send({ message: "Tasks have been added successfully" });
+      console.log("Successful");
+    } catch (error) {
+      console.error(error);
+      response.status(500).send({ message: "Failed to update tasks" });
+    }
+  }));
+  
 userapp.delete("/delete-user/:id",verifytoken,expressAsyncHandler(async(request,response)=>{
    
     // get userCollection
@@ -114,6 +140,7 @@ userapp.post('/user-login',expressAsyncHandler(async(request,response)=>{
        let jwtToken=jwt.sign({username:userOfDB.username},'123456789',{expiresIn:"1d"})
      //send token in response
      response.status(200).send({message:"success",token:jwtToken,user:userOfDB})
+     console.log(userOfDB)
    }
   }
  
