@@ -45,18 +45,24 @@ function Login() {
             )}
 
             <form onSubmit={handleSubmit(handleUserLogin)}>
+            <label htmlFor='username' className='custom-label'>
+    User Name
+  </label>
               <MDBInput
+              
                 wrapperClass='mb-4'
                 label='User Name'
                 id='username'
                 type='text'
-                className='input box '
+                className='input box text-white label-color '
+                labelAttributes={{ style: { color: '#FF0000' } }}
                 {...register('username', {
                   required: true,
                   minLength: 4,
                   maxLength: 22
                 })}
               />
+               
               {errors.username?.type === 'required' && (
                 <p className="text-danger">*enter your username</p>
               )}
@@ -66,7 +72,9 @@ function Login() {
               {errors.username?.type === 'maxLength' && (
                 <p className="text-danger">*maximum length is 22 letter word</p>
               )}
-
+ <label htmlFor='username' className='custom-label'>
+    Password 
+  </label>
               <MDBInput
                 wrapperClass='mb-4'
                 label='Password'

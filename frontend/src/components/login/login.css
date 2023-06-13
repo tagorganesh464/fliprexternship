@@ -2,7 +2,13 @@
   margin: 0;
   padding: 0;
   font-family: 'Barlow Condensed', sans-serif;
+  color: aliceblue;
 }
+
+.label-color {
+  color: #ff0000; /* Replace with your desired color */
+}
+
 
 .log-in {
   display: flex;
@@ -10,7 +16,7 @@
   align-items: center;
   min-height: 100vh;
   width: 100%;
-  background: url('../../images/majestic_jungle___thursday_by_darkmaster777_dfwy39z-pre.jpg') no-repeat;
+  background: url('../../images/neon-4k-hd-best-for-desktop-wallpaper-preview.jpg') no-repeat;
   background-position: center;
   background-size: cover;
 }

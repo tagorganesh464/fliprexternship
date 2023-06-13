@@ -1,13 +1,31 @@
-.hello {
-  background: #fccb90; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  border-bottom: 1px solid #dee2e6;
-  padding: 1rem 0;
+
+.nav-link:hover {
+  /* Add your hover styles here */
+  color: #fff; /* For example, change the text color to white on hover */
+  background-color: #000; /* For example, change the background color to black on hover */
 }
 
-.hello .nav-link {
-  color : black; /* Set the text color to white */
-}
 
 /* Add your additional custom styles here */
+.body1 {
+  background: rgba(130, 121, 121, 0.4);
+  top: 0px;
+  left: 0;
+  width: 100%;
+  font-family: "poppins", sans-serif;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  
+}
+
+
+
+.menu li:hover::after {
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+}
+
+
+

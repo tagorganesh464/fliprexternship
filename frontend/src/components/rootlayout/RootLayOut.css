@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    }
+    .home{
+      background-image: url('../../images/tzokbat_by_hellraidgr_dfjsj65-pre.jpg');
+      background-position:center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      height: 100%;
+      
+    }
+    
+    .users,.emp-dashboard{
+      background-image: url('../../images/neon-4k-hd-best-for-desktop-wallpaper-preview.jpg');
+      background-position:center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      height: 100%;
+    }
+    
+    .add-user,.login{
+      background-image: url('../../images/neon-4k-hd-best-for-desktop-wallpaper-preview.jpg');
+      background-position:center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      height: 100%;
+    }
+    /* .add-task{
+      background-image: url(../../images/img1.jpg);
+      background-position:center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      height: 100%;
+    } */
+    
+    .main{
+      min-height: calc(100vh - 55px);
+    }
