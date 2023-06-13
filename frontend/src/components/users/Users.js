@@ -76,7 +76,7 @@ const Users = () => {
   }, []);
 
   return (
-    <div className="employee">
+    <div className="employee table-style">
       {error.length !== 0 && <p className="text-danger display-1"> {error}</p>}
 
       <main className="table  d-block m-auto ">

@@ -59,7 +59,7 @@ const EmpDashboard = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container ">
       <Card className="card">
         <Card.Body>
           <Card.Title>Welcome Back - {currentUser.username}</Card.Title>
