@@ -1,9 +1,11 @@
 import React, { useContext, useEffect } from 'react';
+import "../global.css"
 import { loginContext } from '../../context/loginContext';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { MDBBtn, MDBContainer, MDBRow, MDBCol, MDBInput } from 'mdb-react-ui-kit';
 import './login.css';
+
 
 function Login() {
   const navigate = useNavigate();
@@ -25,8 +27,7 @@ function Login() {
   }, [userLoginStatus, role]);
 
   return (
-    <div className="login">
-    <section>
+    <div className="login log-in">
     <div className="new-form">
     <MDBContainer className="my-5 gradient-form">
       <MDBRow>
@@ -102,7 +103,6 @@ function Login() {
       </MDBRow>
     </MDBContainer>
     </div>
-    </section>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "../global.css"
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -44,7 +45,7 @@ const AddUser = () => {
   };
 
   return (
-    <section>
+    <div className="add-user-style">
     <div
     className="add-user-container navi-6"
   
@@ -215,7 +216,7 @@ const AddUser = () => {
         </MDBRow>
       </MDBContainer>
     </div>
-    </section>
+    </div>
   );
 };
 

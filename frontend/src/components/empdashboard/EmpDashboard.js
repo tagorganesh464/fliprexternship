@@ -1,4 +1,4 @@
-
+import "../global.css"
 import './empdashboard.css';
 import { useContext } from 'react';
 import { loginContext } from '../../context/loginContext';

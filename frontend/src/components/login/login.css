@@ -1,9 +1,10 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Barlow Condensed', sans-serif;
 }
 
-section {
+.log-in {
   display: flex;
   justify-content: center;
   align-items: center;
