@@ -45,49 +45,57 @@ function Login() {
             )}
 
             <form onSubmit={handleSubmit(handleUserLogin)}>
-            <label htmlFor='username' className='custom-label'>
-    User Name
-  </label>
-              <MDBInput
-              
-                wrapperClass='mb-4'
-                label='User Name'
-                id='username'
-                type='text'
-                className='input box text-white label-color '
-                labelAttributes={{ style: { color: '#FF0000' } }}
-                {...register('username', {
-                  required: true,
-                  minLength: 4,
-                  maxLength: 22
-                })}
-              />
-               
-              {errors.username?.type === 'required' && (
-                <p className="text-danger">*enter your username</p>
-              )}
-              {errors.username?.type === 'minLength' && (
-                <p className="text-danger">*minimum 4 letter word is required</p>
-              )}
-              {errors.username?.type === 'maxLength' && (
-                <p className="text-danger">*maximum length is 22 letter word</p>
-              )}
- <label htmlFor='username' className='custom-label'>
-    Password 
-  </label>
-              <MDBInput
-                wrapperClass='mb-4'
-                label='Password'
-                id='password'
-                type='password'
-                {...register('password', { required: true, minLength: 4 })}
-              />
-              {errors.password?.type === 'required' && (
-                <p className='text-danger'>*enter your password</p>
-              )}
-              {errors.password?.type === 'minLength' && (
-                <p className='text-danger'>*minimum 4 password word is required</p>
-              )}
+           
+  <div className="inputbox form-floating item1">
+      <i className="fa-regular fa-user"></i>
+      <input
+        type="text"
+        id="username"
+        className="form-control "
+        {...register("username", {
+          required: true,
+          minLength: 4,
+          maxLength: 22,
+        })}
+        placeholder="xyz"
+      ></input>
+        <label htmlFor="username" className="text-dark" >
+        UserName
+      </label>
+      {errors.username?.type === "required" && (
+        <p className=" text-danger">*enter your first name</p>
+      )}
+      {errors.username?.type === "minLength" && (
+        <p className=" text-danger">*minimum 4 letter word is required</p>
+      )}
+      {errors.username?.type === "maxLength" && (
+        <p className=" text-danger">
+          *maximum 22 letter word is required
+        </p>
+      )}
+    </div>
+  <div className="inputbox form-floating item1">
+      <i className="fa-solid fa-lock"></i>
+     
+      <input
+        type="password"
+        id="password"
+        className="form-control "
+        {...register("password", { required: true, minLength: 4 })}
+        placeholder="xyz"
+      ></input>
+       <label htmlFor="password" className="text-dark">
+        Password
+      </label>
+      {errors.password?.type === "required" && (
+        <p className=" text-danger">*enter your password</p>
+      )}
+      {errors.password?.type === "minLength" && (
+        <p className=" text-danger">
+          *minimum 4 password word is required
+        </p>
+      )}
+    </div>
 
               <div className="text-center pt-1 mb-5 pb-1">
                 <MDBBtn type="submit" className="mb-4 w-100 gradient-custom-2">Login</MDBBtn>

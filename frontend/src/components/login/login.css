@@ -2,11 +2,12 @@
   margin: 0;
   padding: 0;
   font-family: 'Barlow Condensed', sans-serif;
+  font-weight: bold;
   color: aliceblue;
 }
 
-.label-color {
-  color: #ff0000; /* Replace with your desired color */
+.item1{
+  margin-bottom: 1rem;
 }
 
 
