@@ -1,0 +1,80 @@
+.emp-style{
+    margin-top: 6rem;
+    padding: 3rem;
+    width: 800px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    backdrop-filter: blur(16px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.employee {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.name {
+  font-size: 2rem;
+}
+
+.department,
+.email,
+.phone,
+.doj {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.edit-button {
+  background-color: #ffc107;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.emp-profile{
+    background-image: url('../../images/80043_03_uh-so-the-default-windows-11-wallpapers-are-amazing_full.jpg');
+    background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.name{
+    color:#047c82;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+.inputbox{
+    color: black;
+    width: 100%;
+}
+.modal.transparent-backdrop .modal-content {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+  }
+  
+  
+
+.edit-form{
+    width: 500px;
+  height: 500px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  
+}
+
+.modal{
+    /* background-color: #8B8E8A; */
+    background-image: url('../../images/80043_03_uh-so-the-default-windows-11-wallpapers-are-amazing_full.jpg');
+    background-size: cover;
+    border: none;
+    box-shadow: none;
+}

@@ -9,6 +9,7 @@ import AddUser from "./components/adduser/AddUser";
 import Users from "./components/users/Users";
 import AddTask from "./components/addtask/AddTask";
 import EmpDashboard from "./components/empdashboard/EmpDashboard";
+import EmpProfile from "./components/empProfile/EmpProfile"
 
 function App() {
 
@@ -45,6 +46,10 @@ function App() {
         {
           path:"/add-task",
           element:<AddTask/>
+        },
+        {
+          path:"/emp-profile",
+          element:<EmpProfile/>
         }
 
 

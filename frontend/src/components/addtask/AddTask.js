@@ -218,7 +218,7 @@ console.log(formattedEndTime,formattedStartTime)
       <div className="pt-4 ">
         <div className="card bg-transparent p-0 text-white border-0 rounded-0 lh-0 shadow-none d-block m-auto for-padding">
           <div className="card-body task mb-5 for-spacing">
-            <h3 className="title">Add new task</h3>
+            <h3 className="title text-white">Add new task</h3>
 
             <form onSubmit={handleSubmit(formSubmit)}>
               <div className="row justify-content-center">
