@@ -6,6 +6,9 @@
   font-family: 'Barlow Condensed', sans-serif;
   
 }
+.users{
+  margin: 0 auto;
+}
 .users1{
   color: #333;
   font-weight: bold;
@@ -212,4 +215,16 @@ tbody td.active {
 
 .alr:hover:after {
   width: 100%;
+}
+
+.user-edit-style{
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.for-modal-styling{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
