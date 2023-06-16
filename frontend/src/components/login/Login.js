@@ -54,7 +54,7 @@ function Login() {
         className="form-control "
         {...register("username", {
           required: true,
-          minLength: 4,
+          minLength: 3,
           maxLength: 22,
         })}
         placeholder="xyz"
@@ -66,7 +66,7 @@ function Login() {
         <p className=" text-danger">*enter your first name</p>
       )}
       {errors.username?.type === "minLength" && (
-        <p className=" text-danger">*minimum 4 letter word is required</p>
+        <p className=" text-danger">*minimum 3 letter word is required</p>
       )}
       {errors.username?.type === "maxLength" && (
         <p className=" text-danger">

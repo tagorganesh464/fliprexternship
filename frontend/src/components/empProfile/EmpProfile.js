@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { loginContext } from '../../context/loginContext';
+import { taskContext } from "../../context/TasksContextProvider";
 import { useNavigate } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
@@ -12,6 +13,7 @@ function EmpProfile() {
   let [currentUser, err, userLoginStatus, loginUser, logoutUser, role] = useContext(loginContext);
   let token = sessionStorage.getItem('token');
   let [error, setError] = useState('');
+  let [tasks,setTasks]=useContext(taskContext)
   //state of user to edit
   let [userToEdit, setUserToEdit] = useState({});
   // State variable to hold the updated user details
@@ -34,6 +36,34 @@ function EmpProfile() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const getUsers = () => {
+   
+    axios
+      .get(`http://localhost:5000/user-api/get-emp/${currentUser.email}`, {
+        headers: { Authorization: "Bearer " + token },
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          setTasks(response.data.payload);
+          
+          
+        }
+        if (response.status !== 200) {
+          setError(response.data.message);
+        }
+      })
+      .catch((err) => {
+        if (err.response) {
+          setError(err.message);
+          console.log(err.response);
+        } else if (err.request) {
+          setError(err.message);
+        } else {
+          setError(err.message);
+        }
+      });
+    // reset();
+  };
   const editUser = (userToEdit) => {
     console.log(userToEdit);
     //show modal
@@ -46,6 +76,7 @@ function EmpProfile() {
     setValue('phone', userToEdit.phone);
     setValue('department', userToEdit.department);
   };
+ 
 
   //save modified user
   const saveUser = () => {
@@ -67,6 +98,7 @@ function EmpProfile() {
         if (response.status === 200) {
           console.log(response.data.message);
           setUpdatedUser(modifiedUser);
+          getUsers();
         }
         if (response.status !== 200) {
           setError(response.data.message);
@@ -81,20 +113,23 @@ function EmpProfile() {
           setError(err.message);
         }
       });
-    reset();
   };
+  
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   return (
     <div className="container users-data d-flex justify-content-center align-items-center emp-profil">
       <div className="emp-style">
      
           <div class="employee">
-  <h1 class="name">{updatedUser.username || userObj.username}</h1>
-  <p class="department">Dept - {updatedUser.department || userObj.department}</p>
-  <p class="email">Email - {updatedUser.email || userObj.email}</p>
-  <p class="phone">Ph: {updatedUser.phone || userObj.phone}</p>
-  <p class="doj">DOJ - {userObj.jod}</p>
-  <button className="btn btn-warning float-start" onClick={() => editUser(userObj)}>
+  <h1 class="name">{tasks?.username}</h1>
+  <p class="department">Dept - {tasks?.department}</p>
+  <p class="email">Email - {tasks?.email}</p>
+  <p class="phone">Ph:  {tasks?.phone}</p>
+  <p class="doj">DOJ - {tasks?.jod}</p>
+  <button className="btn btn-warning float-start" onClick={() => editUser(tasks)}>
   Edit
 </button>
 
@@ -135,6 +170,17 @@ function EmpProfile() {
                 {...register('password')}
               />
               <label htmlFor="department">Password</label>
+            </div>
+              {/* email */}
+              <div className="inputbox form-floating mb-3">
+              <input
+                type="email"
+                className="form-control form-inp"
+                id="email"
+                placeholder="email"
+                {...register('email')}disabled
+              />
+              <label htmlFor="email">Email</label>
             </div>
             {/* department */}
             <div className="inputbox form-floating mb-3">
