@@ -210,6 +210,8 @@ console.log(formattedEndTime,formattedStartTime)
 
 
 
+
+
   return (
     <div className="addtask-style">
     <div className="AddTask container ">
@@ -324,7 +326,7 @@ console.log(formattedEndTime,formattedStartTime)
                     </label>
 
                     {errors.timeTaken?.type === "required" && (
-                      <p className=" text-danger">*enter your Phone number</p>
+                      <p className=" text-danger">*enter Time in Minutes</p>
                     )}
                     {errors.timeTaken?.type === "maxLength" && (
                       <p className=" text-danger">

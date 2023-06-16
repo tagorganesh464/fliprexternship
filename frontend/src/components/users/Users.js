@@ -114,7 +114,7 @@ const Users = () => {
                           className="alr"
                           onClick={() => deleteUser(user)}
                         >
-                          <span className="spanl">Remove</span>
+                          <span className="spanl">Deactivate</span>
                         </a>
                       </div>
                     </td>
