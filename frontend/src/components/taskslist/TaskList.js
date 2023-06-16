@@ -59,6 +59,8 @@ const TaskList = () => {
       })
       .then((response) => {
         if (response.status === 200) {
+          console.log("Hi I am From TaskList")
+          console.log(response.data.payload)
           setTasks(response.data.payload);
         }
         if (response.status !== 200) {

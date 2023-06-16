@@ -10,6 +10,7 @@ import Users from "./components/users/Users";
 import AddTask from "./components/addtask/AddTask";
 import EmpDashboard from "./components/empdashboard/EmpDashboard";
 import EmpProfile from "./components/empProfile/EmpProfile"
+import UserDetails from "./components/userDetails/UserDetails"
 
 function App() {
 
@@ -50,6 +51,10 @@ function App() {
         {
           path:"/emp-profile",
           element:<EmpProfile/>
+        },
+        {
+          path:"/user-details",
+          element:<UserDetails/>
         }
 
 

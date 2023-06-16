@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     }
-    .home,.add-task{
+    .home,.add-task,.user-details{
       background-image: url('../../images/tzokbat_by_hellraidgr_dfjsj65-pre.jpg');
       background-position:center;
       background-repeat: no-repeat;

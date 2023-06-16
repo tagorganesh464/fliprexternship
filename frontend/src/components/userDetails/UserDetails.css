@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+  .users-details-style{
+    position: relative;
+    min-height: 100vh;
+    background: url('../../images/tzokbat_by_hellraidgr_dfjsj65-pre.jpg') no-repeat;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 10px; /* Add this line */
+  }

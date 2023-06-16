@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { taskContext } from "../../context/TasksContextProvider";
 import Graphs from '../graphs/Graphs'
 import "./Users.css";
+import { useNavigate } from "react-router-dom";
 
 const Users = () => {
   let [error, setError] = useState("");
@@ -15,6 +16,7 @@ const Users = () => {
   let [showModal, setShowModal] = useState(false);
   let token = sessionStorage.getItem("token");
   let [tasks, setTasks] = useContext(taskContext);
+  const navigate = useNavigate();
 
   const getUsers = () => {
     axios
@@ -67,7 +69,7 @@ const Users = () => {
     setSelectedUser(user);
     console.log(user)
     setTasks(user)
-    setShowModal(true);
+    navigate("/user-details")
   };
 
   useEffect(() => {
@@ -136,7 +138,7 @@ const Users = () => {
       </div>
 
       {/* Modal */}
-      {selectedUser && (
+      {/* {selectedUser && (
         <Modal show={showModal} onHide={() => setShowModal(false)} backdrop={false}
         centered
         className="modal transparent-backdrop for-modal-styling">
@@ -152,7 +154,7 @@ const Users = () => {
           </Modal.Body>
       
         </Modal>
-      )}
+      )} */}
     </div>
   );
 };
