@@ -54,13 +54,11 @@ const TaskList = () => {
 
   const getUsers = () => {
     axios
-      .get(`http://localhost:5000/user-api/get-user/${currentUser.username}`, {
+      .get(`http://localhost:5000/user-api/get-user/${currentUser.email}`, {
         headers: { Authorization: "Bearer " + token },
       })
       .then((response) => {
         if (response.status === 200) {
-          console.log("Hi I am From TaskList")
-          console.log(response.data.payload)
           setTasks(response.data.payload);
         }
         if (response.status !== 200) {
@@ -77,11 +75,9 @@ const TaskList = () => {
           setError(err.message);
         }
       });
-    
   };
   useEffect(() => {
     getUsers();
-   
   }, []);
   return (
     <div className="mt-5 tasklist">

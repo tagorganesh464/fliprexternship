@@ -1,41 +1,32 @@
-import React from 'react';
-import { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
-import { loginContext } from '../../context/loginContext';
+import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 import { taskContext } from "../../context/TasksContextProvider";
-import { useNavigate } from 'react-router-dom';
-import { Modal, Button } from 'react-bootstrap';
-import { useForm } from 'react-hook-form';
-import Card from 'react-bootstrap/Card';
-import './empProfile.css';
+import { useForm } from "react-hook-form";
+import { loginContext } from "../../context/loginContext";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Modal from "react-bootstrap/Modal";
+import "./empProfile.css";
 
-function EmpProfile() {
-  let [currentUser, err, userLoginStatus, loginUser, logoutUser, role] = useContext(loginContext);
-  let token = sessionStorage.getItem('token');
-  let [error, setError] = useState('');
-  let [tasks,setTasks]=useContext(taskContext)
-  //state of user to edit
-  let [userToEdit, setUserToEdit] = useState({});
-  // State variable to hold the updated user details
-  const [updatedUser, setUpdatedUser] = useState({});
-
-  //useForm
+const EmpProfile = () => {
+    let [tasks,setTasks]=useContext(taskContext)
+  let [error, setError] = useState("");
+  let token = sessionStorage.getItem("token");
+  let [currentUser, err, userLoginStatus, loginUser, logoutUser, role,setCurrentUser] =
+  useContext(loginContext);
   let {
     register,
+    handleSubmit,
     setValue,
     getValues,
-    handleSubmit,
     formState: { errors },
-    reset
   } = useForm();
-  const userObj = currentUser;
-  //navigate hook
-  let navigate = useNavigate();
-  //modal state
   const [show, setShow] = useState(false);
+  const [userToEdit, setUserToEdit] = useState({});
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   const getUsers = () => {
    
     axios
@@ -64,49 +55,39 @@ function EmpProfile() {
       });
     // reset();
   };
-  const editUser = (userToEdit) => {
-    console.log(userToEdit);
-    //show modal
+
+  // edit user
+  const editUser = (userObj) => {
     handleShow();
-    //set user edit state
-    setUserToEdit(userToEdit);
-    //set values to edit for
-    setValue('username', userToEdit.username);
-    setValue('password', userToEdit.password);
-    setValue('phone', userToEdit.phone);
-    setValue('department', userToEdit.department);
+    setUserToEdit(userObj);
+    setValue("username", userObj?.username);
+    setValue("jod", userObj?.jod);
+    setValue("password", userObj?.password);
+    setValue("department", userObj?.department)
+    setValue("email", userObj?.email);
+    setValue("phone",userObj?.phone)
   };
- 
-
-  //save modified user
-  const saveUser = () => {
-    //close modal
+  //   saveModifiedUser
+  const saveModifiedUser = () => {
     handleClose();
+    let modifieduser = getValues();
 
-    //get values from form
-    let modifiedUser = getValues();
-    console.log(modifiedUser);
-    //add id
-    modifiedUser.name = userToEdit.username;
-    console.log(modifiedUser.name);
-    //modify user in DB
     axios
-      .put(`http://localhost:5000/user-api/update-user/${modifiedUser.name}`, modifiedUser, {
-        headers: { Authorization: 'Bearer ' + token }
+      .put( `http://localhost:5000/user-api/update-user`,
+      modifieduser,
+      {
+        headers: { Authorization: "Bearer " + token },
       })
       .then((response) => {
         if (response.status === 200) {
-          console.log(response.data.message);
-          setUpdatedUser(modifiedUser);
+
           getUsers();
-        }
-        if (response.status !== 200) {
-          setError(response.data.message);
         }
       })
       .catch((err) => {
         if (err.response) {
           setError(err.message);
+          console.log(err.response);
         } else if (err.request) {
           setError(err.message);
         } else {
@@ -114,7 +95,9 @@ function EmpProfile() {
         }
       });
   };
-  
+
+ 
+
   useEffect(() => {
     getUsers();
   }, []);
@@ -149,7 +132,7 @@ function EmpProfile() {
         <Modal.Body className="edit-form">
           <h3 className="fw-bold mb-4 pb-2 pb-md-0 mb-md-5 text-center">Edit Profile</h3>
           {/* edit form */}
-          <form onSubmit={handleSubmit(saveUser)}>
+          <form onSubmit={handleSubmit(saveModifiedUser)}>
             {/* name */}
             <div className="inputbox form-floating mb-3">
               <input
@@ -164,7 +147,7 @@ function EmpProfile() {
             <div className="inputbox form-floating mb-3">
               <input
                 type="text"
-                className="form-control form-inp"
+                className="form-control form-inp text-dark"
                 id="password"
                 placeholder="Password"
                 {...register('password')}
@@ -210,7 +193,7 @@ function EmpProfile() {
               <Button variant="danger" className="btn-sm me-2" onClick={handleClose}>
                 Close
               </Button>
-              <Button variant="primary" className="btn-sm" onClick={saveUser}>
+              <Button variant="primary" className="btn-sm" onClick={saveModifiedUser}>
                 Save Changes
               </Button>
             </div>

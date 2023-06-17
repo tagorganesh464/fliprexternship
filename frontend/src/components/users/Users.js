@@ -43,9 +43,12 @@ const Users = () => {
       });
   };
 
+
   const deleteUser = (user) => {
+  
+    
     axios
-      .delete(`http://localhost:5000/user-api/delete-user/${user.username}`, {
+      .delete(`http://localhost:5000/user-api/delete-user/${user.email}`,{
         headers: { Authorization: "Bearer " + token },
       })
       .then((response) => {
@@ -65,6 +68,10 @@ const Users = () => {
       });
   };
 
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   const showUserDetails = (user) => {
     setSelectedUser(user);
     console.log(user)
@@ -72,9 +79,6 @@ const Users = () => {
     navigate("/user-details")
   };
 
-  useEffect(() => {
-    getUsers();
-  }, []);
 
   return (
     <div className="users">
