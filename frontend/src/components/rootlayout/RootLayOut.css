@@ -11,6 +11,15 @@
       height: 100%;
       
     }
+    .add-task{
+      background-image: url('../../images/img10.jpg');
+      background-position:center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      height: 100%;
+      
+    }
     
     .users,.emp-dashboard{
       background-image: url('../../images/neon-4k-hd-best-for-desktop-wallpaper-preview.jpg');

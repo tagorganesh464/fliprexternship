@@ -215,12 +215,17 @@ console.log(formattedEndTime,formattedStartTime)
 
   return (
     <div className="addtask-style">
-    <div className="AddTask container ">
+    <div className="AddTask container">
+    <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v6.4.0/css/all.css"
+      ></link>
       {/* first row for username */}
       {error?.length !== 0 && <p className="text-danger display-2"> {error}</p>}
       <div className="pt-4 ">
         <div className="card bg-transparent p-0 text-white border-0 rounded-0 lh-0 shadow-none d-block m-auto for-padding">
-          <div className="card-body task mb-5 for-spacing">
+        <article class="box">
+    <div className="card-body task mb-5 for-spacing">
             <h3 className="title text-white">Add new task</h3>
 
             <form onSubmit={handleSubmit(formSubmit)}>
@@ -344,6 +349,11 @@ console.log(formattedEndTime,formattedStartTime)
               </div>
             </form>
           </div>
+      <span class="top"></span>
+      <span class="right"></span>
+      <span class="bottom"></span>
+      <span class="left"></span>
+    </article>
         </div>
       </div>
 

@@ -129,7 +129,7 @@ const EmpProfile = () => {
         centered
         className="modal transparent-backdrop"
       >
-        <Modal.Body className="edit-form">
+        <Modal.Body className="edit-form block">
           <h3 className="fw-bold mb-4 pb-2 pb-md-0 mb-md-5 text-center">Edit Profile</h3>
           {/* edit form */}
           <form onSubmit={handleSubmit(saveModifiedUser)}>
