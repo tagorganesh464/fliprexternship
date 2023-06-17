@@ -113,24 +113,13 @@ const Users = () => {
                     <td>{user.jod}</td>
                     <td>
                       <div className="wrapper">
-                        <a
-                          href="#"
-                          className="alr"
-                          onClick={() => deleteUser(user)}
-                        >
-                          <span className="spanl">Deactivate</span>
-                        </a>
+                      <button className="btn btn-danger" style={{ width: "100px" }} onClick={()=>deleteUser(user)}>Deactivate</button>
                       </div>
                     </td>
                     <td>
                       <div className="wrapper">
-                        <a
-                          href="#"
-                          className="alr"
-                          onClick={() => showUserDetails(user)}
-                        >
-                          <span className="spanl">Details</span>
-                        </a>
+                      <button className="btn btn-warning" style={{ width: "100px" }} onClick={() => showUserDetails(user)}>Details</button>
+
                       </div>
                     </td>
                   </tr>

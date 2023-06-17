@@ -8,6 +8,15 @@
   .for-spacing{
     width: 28rem;
   }
+  .addtask-style{
+    background-image: url('../../images/img10.jpg');
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+    
+  }
   
   
   .title {

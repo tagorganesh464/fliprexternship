@@ -45,18 +45,19 @@ const AddUser = () => {
   };
 
   return (
-    <div className="add-user-style">
+    
+	 <div className="add-user-style">
     <div
     className="add-user-container navi-6"
   
-  >
+  ><div class="rainbow">
       
       <MDBContainer fluid>
-        <MDBRow className="justify-content-center align-items-center m-5 navi-8">
+        <MDBRow className="justify-content-center align-items-center m-4 navi-8">
           <MDBCol md="12">
           <div className="wider-card-wrapper ">
            
-                <h3 className="fw-bold mb-4 pb-2 pb-md-0 mb-md-5">
+                <h3 className="fw-bold mb-2 text-dark">
                   Add new employee
                 </h3>
 
@@ -67,146 +68,154 @@ const AddUser = () => {
                 <form onSubmit={handleSubmit(formSubmit)}>
                   <div className="wider-inputs">
                   <div className='navi-4'> 
-  <MDBRow>
-    <MDBCol md="12">
-      <MDBInput
-        label="Employee Name"
-        size="lg"
-        id="username"
-        type="text"
-        {...register('username', {
-          required: 'Please enter your username',
-          minLength: {
-            value: 4,
-            message: 'Username should be at least 4 characters long',
-          },
-          maxLength: {
-            value: 10,
-            message: 'Username should not exceed 10 characters',
-          },
-        })}
-      />
-      {errors.username && (
-        <p className="text-danger">
-          {errors.username.message}
-        </p>
-      )}
-    </MDBCol>
-  </MDBRow>
+                  <div className="inputbox1 form-floating">
+                    <i className="fa-regular fa-user"></i>
+                    <input
+                      type="text"
+                      id="username"
+                      className="form-control "
+                      placeholder="xyz"
+                      {...register("username", {
+                        required: true,
+                        minLength: 4,
+                        maxLength: 10,
+                      })}
+                    ></input>
+                    <label htmlFor="username" className="text-dark">
+                      User Name
+                    </label>
+
+                    {errors.username?.type === "required" && (
+                      <p className=" text-danger">*enter your first name</p>
+                    )}
+                    {errors.username?.type === "minLength" && (
+                      <p className=" text-danger">
+                        *minimum 4 letter word is required
+                      </p>
+                    )}
+                    {errors.username?.type === "maxLength" && (
+                      <p className=" text-danger">
+                        *maximum 6 letter word is required
+                      </p>
+                    )}
+                  </div>
 </div>
 
                   <div className='navi-4'>
-                  <MDBRow>
-                    <MDBCol md="12">
-                      <MDBInput
-                        label="Password"
-                        size="lg"
-                        id="password"
-                        type="password"
-                        {...register('password', {
-                          required: 'Please enter your password',
-                          minLength: {
-                            value: 4,
-                            message:
-                              'Password should be at least 4 characters long',
-                          },
-                        })}
-                      />
-                      {errors.password && (
-                        <p className="text-danger">
-                          {errors.password.message}
-                        </p>
-                      )}
-                    </MDBCol>
-                  </MDBRow>
+                  <div className="inputbox1 form-floating">
+                    <i className="fa-solid fa-lock"></i>
+                    <input
+                      type="password"
+                      id="password"
+                      className="form-control "
+                      placeholder="xyz"
+                      {...register("password", {
+                        required: true,
+                        minLength: 4,
+                      })}
+                    ></input>
+                    <label htmlFor="password" className="text-dark">
+                      password
+                    </label>
+
+                    {errors.password?.type === "required" && (
+                      <p className=" text-danger">*enter your password</p>
+                    )}
+                    {errors.password?.type === "minLength" && (
+                      <p className=" text-danger">
+                        *minimum 4 password word is required
+                      </p>
+                    )}
+                  </div>
                   </div>
                   <div className='navi-4'>
-                  <MDBRow>
-                    <MDBCol md="12">
-                      <MDBInput
-                        label="Joining Date"
-                        size="lg"
-                        id="jod"
-                        type="date"
-                        {...register('jod', {
-                          required: 'Please enter your joining date',
-                        })}
-                      />
-                      {errors.jod && (
-                        <p className="text-sm text-danger">
-                          {errors.jod.message}
-                        </p>
-                      )}
-                    </MDBCol>
-                  </MDBRow>
+                  <div className="inputbox1 form-floating">
+                    <i className="fa-solid fa-calendar-days"></i>
+                    <input
+                      type="date"
+                      id="jod"
+                      className="form-control "
+                      placeholder="xyz"
+                      {...register("jod", { required: true })}
+                    ></input>
+                    <label htmlFor="jod" className="text-dark">
+                      joining date
+                    </label>
+
+                    {errors.jod?.type === "required" && (
+                      <span className="text-sm text-danger">
+                        *joining date is required
+                      </span>
+                    )}
+                  </div>
+                
                   </div>
                   <div className='navi-4'> 
-                  <MDBRow>
-                    <MDBCol md="12">
-                      <MDBInput
-                        label="Department"
-                        size="lg"
-                        id="department"
-                        type="text"
-                        {...register('department', {
-                          required: 'Please enter your department',
-                        })}
-                      />
-                      {errors.department && (
-                        <p className="text-danger">
-                          {errors.department.message}
-                        </p>
-                      )}
-                    </MDBCol>
-                  </MDBRow>
+                  <div className="inputbox1 form-floating">
+                    <i className="fa-solid fa-user-magnifying-glass"></i>
+                    <input
+                      type="text"
+                      id="department"
+                      className="form-control "
+                      placeholder="xyz"
+                      {...register("department", { required: true })}
+                    ></input>
+                    <label htmlFor="department" className="text-dark">
+                      Department
+                    </label>
+
+                    {errors.department?.type === "required" && (
+                      <p className=" text-danger">*enter your department</p>
+                    )}
+                  </div>
                   </div>
                   <div className='navi-4'> 
-                  <MDBRow>
-                    <MDBCol md="12">
-                      <MDBInput
-                        label="Email"
-                        size="lg"
-                        id="email"
-                        type="email"
-                        {...register('email', {
-                          required: 'Please enter a valid email address',
-                        })}
-                      />
-                      {errors.email && (
-                        <p className="text-danger">
-                          {errors.email.message}
-                        </p>
-                      )}
-                    </MDBCol>
-                  </MDBRow>
+                 
+                  <div className="inputbox1 form-floating">
+                    <i className="fa-solid fa-envelope"></i>
+                    <input
+                      type="email"
+                      id="email"
+                      className="form-control "
+                      placeholder="xyz"
+                      {...register("email", { required: true })}
+                    ></input>
+                    <label htmlFor="email" className="text-dark">
+                      Email
+                    </label>
+
+                    {errors.email?.type === "required" && (
+                      <p className=" text-danger">*enter your valid email id</p>
+                    )}
+                  </div>
                   </div>
                   <div className='navi-4'> 
-                  <MDBRow>
-                    <MDBCol md="12">
-                      <MDBInput
-                        label="Phone Number"
-                        size="lg"
-                        id="phone"
-                        type="number"
-                        {...register('phone', {
-                          required: 'Please enter your phone number',
-                          maxLength: {
-                            value: 11,
-                            message: 'Phone number should be 11 digits long',
-                          },
-                        })}
-                      />
-                      {errors.phone && (
-                        <p className="text-danger">
-                          {errors.phone.message}
-                        </p>
-                      )}
-                    </MDBCol>
-                  </MDBRow>
+                  <div className="inputbox1 form-floating">
+                    <i className="fa-solid fa-phone"></i>
+                    <input
+                      type="number"
+                      id="phone"
+                      className="form-control "
+                      placeholder="xyz"
+                      {...register("phone", { required: true, maxLength: 11 })}
+                    ></input>
+                    <label htmlFor="phone" className="text-dark">
+                      Phone Number
+                    </label>
+
+                    {errors.phone?.type === "required" && (
+                      <p className=" text-danger">*enter your Phone number</p>
+                    )}
+                    {errors.phone?.type === "maxLength" && (
+                      <p className=" text-danger">
+                        *maximum number length should be 10
+                      </p>
+                    )}
+                  </div>
                   </div>
                   </div>
 
-                  <MDBBtn className="mb-4" size="lg" type="submit">
+                  <MDBBtn className="mb-3" size="lg" type="submit">
                     Submit
                   </MDBBtn>
                 </form>
@@ -217,6 +226,9 @@ const AddUser = () => {
       </MDBContainer>
     </div>
     </div>
+</div>
+      
+     
   );
 };
 

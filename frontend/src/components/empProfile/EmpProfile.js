@@ -3,17 +3,24 @@ import axios from "axios";
 import { taskContext } from "../../context/TasksContextProvider";
 import { useForm } from "react-hook-form";
 import { loginContext } from "../../context/loginContext";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+
+import Button from "react-bootstrap/Button"
 import Modal from "react-bootstrap/Modal";
 import "./empProfile.css";
 
 const EmpProfile = () => {
-    let [tasks,setTasks]=useContext(taskContext)
+  let [tasks, setTasks] = useContext(taskContext);
   let [error, setError] = useState("");
   let token = sessionStorage.getItem("token");
-  let [currentUser, err, userLoginStatus, loginUser, logoutUser, role,setCurrentUser] =
-  useContext(loginContext);
+  let [
+    currentUser,
+    err,
+    userLoginStatus,
+    loginUser,
+    logoutUser,
+    role,
+    
+  ] = useContext(loginContext);
   let {
     register,
     handleSubmit,
@@ -28,7 +35,6 @@ const EmpProfile = () => {
   const handleShow = () => setShow(true);
 
   const getUsers = () => {
-   
     axios
       .get(`http://localhost:5000/user-api/get-emp/${currentUser.email}`, {
         headers: { Authorization: "Bearer " + token },
@@ -36,8 +42,6 @@ const EmpProfile = () => {
       .then((response) => {
         if (response.status === 200) {
           setTasks(response.data.payload);
-          
-          
         }
         if (response.status !== 200) {
           setError(response.data.message);
@@ -62,41 +66,41 @@ const EmpProfile = () => {
     setUserToEdit(userObj);
     setValue("username", userObj?.username);
     setValue("jod", userObj?.jod);
-    setValue("password", userObj?.password);
-    setValue("department", userObj?.department)
+    setValue("department", userObj?.department);
     setValue("email", userObj?.email);
-    setValue("phone",userObj?.phone)
+    setValue("phone", userObj?.phone);
   };
   //   saveModifiedUser
   const saveModifiedUser = () => {
-    handleClose();
-    let modifieduser = getValues();
+    
+    if(Object.keys(errors).length===0){
+      let modifieduser = getValues();
 
-    axios
-      .put( `http://localhost:5000/user-api/update-user`,
-      modifieduser,
-      {
-        headers: { Authorization: "Bearer " + token },
-      })
-      .then((response) => {
-        if (response.status === 200) {
-
-          getUsers();
-        }
-      })
-      .catch((err) => {
-        if (err.response) {
-          setError(err.message);
-          console.log(err.response);
-        } else if (err.request) {
-          setError(err.message);
-        } else {
-          setError(err.message);
-        }
-      });
+      axios
+        .put(`http://localhost:5000/user-api/update-user`, modifieduser, {
+          headers: { Authorization: "Bearer " + token },
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            getUsers();
+          }
+        })
+        .catch((err) => {
+          if (err.response) {
+            setError(err.message);
+            console.log(err.response);
+          } else if (err.request) {
+            setError(err.message);
+          } else {
+            setError(err.message);
+          }
+        });
+  
+        handleClose();
+    }
+    
+   
   };
-
- 
 
   useEffect(() => {
     getUsers();
@@ -135,24 +139,44 @@ const EmpProfile = () => {
           <form onSubmit={handleSubmit(saveModifiedUser)}>
             {/* name */}
             <div className="inputbox form-floating mb-3">
-              <input
-                type="text"
-                className="form-control form-inp"
-                id="username"
-                placeholder="namexyz"
-                {...register('username')}
-              />
-              <label htmlFor="username">Name</label>
+            <input
+                    type="text"
+                    id="username"
+                    className="form-control "
+                    placeholder="xyz"
+                    {...register("username", {
+                      required: true,
+                      minLength: 4,
+                      maxLength: 10,
+                    })}
+                  ></input>
+                  <label htmlFor="username" className="text-dark">
+                    User Name
+                  </label>
+
+                  {errors.username?.type === "required" && (
+                    <p className=" text-danger">*enter your first name</p>
+                  )}
+                  {errors.username?.type === "minLength" && (
+                    <p className=" text-danger">
+                      *minimum 4 letter word is required
+                    </p>
+                  )}
+                  {errors.username?.type === "maxLength" && (
+                    <p className=" text-danger">
+                      *maximum 6 letter word is required
+                    </p>
+                  )}
             </div>
             <div className="inputbox form-floating mb-3">
               <input
                 type="text"
                 className="form-control form-inp text-dark"
                 id="password"
-                placeholder="Password"
+                placeholder="xyz"
                 {...register('password')}
               />
-              <label htmlFor="department">Password</label>
+              <label htmlFor="password">Password</label>
             </div>
               {/* email */}
               <div className="inputbox form-floating mb-3">
