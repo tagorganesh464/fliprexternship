@@ -175,6 +175,7 @@ tbody td.active {
   display: block;
   width: 100px;
   height: 34px;
+  margin-left: 65px;
   line-height: 34px;
   font-size: 18px;
   font-family: sans-serif;
@@ -195,6 +196,16 @@ tbody td.active {
   width: 0;
   height: 100%;
   background: #d11a2a;
+  transition: all 0.35s;
+}
+.alr-details:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: green;
   transition: all 0.35s;
 }
 

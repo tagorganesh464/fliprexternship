@@ -87,7 +87,8 @@ const Users = () => {
                 <th>Contact Number</th>
                 <th>Department</th>
                 <th>Joining date</th>
-                <th colSpan="2">Actions</th>
+                <th>Deactivate</th>
+                <th>Details</th>
               </tr>
             </thead>
             <tbody>
@@ -99,12 +100,20 @@ const Users = () => {
                   <td>{user.department}</td>
                   <td>{user.jod}</td>
                   <td>
-                  <div className="wrapper d-flex  justify-content-around">
-                      <a href="#" className="alr m-2" onClick={()=>deleteUser(user)}>
+                  <div className="wrapper">
+                      <a href="#" className="alr" onClick={()=>deleteUser(user)}>
                         <span className="spanl">Deactivate</span>
                       </a>
                       
-                      <a href="#" className="alr m-2" onClick={()=>empGraphs(user)}>
+                  
+                    </div>
+                    
+                  </td>
+                  <td>
+                  <div className="wrapper">
+                      
+                      
+                      <a href="#" className="alr alr-details" onClick={()=>empGraphs(user)}>
                         <span className="spanl">Details</span>
                       </a>
                     </div>
