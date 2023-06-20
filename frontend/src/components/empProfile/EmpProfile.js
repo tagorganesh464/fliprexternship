@@ -7,6 +7,8 @@ import { loginContext } from "../../context/loginContext";
 import Button from "react-bootstrap/Button"
 import Modal from "react-bootstrap/Modal";
 import "./empProfile.css";
+import Tilt from "react-vanilla-tilt"
+
 
 const EmpProfile = () => {
   let [tasks, setTasks] = useContext(taskContext);
@@ -108,6 +110,7 @@ const EmpProfile = () => {
 
   return (
     <div className="container users-data d-flex justify-content-center align-items-center emp-profil">
+       <Tilt className="bg-transparent p-0 text-white border-0 rounded-0 lh-0 shadow-none d-bolck m-auto mt-5" style={{width:"800px"}}>
       <div className="emp-style">
      
           <div class="employee">
@@ -124,6 +127,7 @@ const EmpProfile = () => {
 
      
       </div>
+      </Tilt>
 
       {/* modal to edit user */}
       <Modal

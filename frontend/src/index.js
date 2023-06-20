@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from "./reportWebVitals";
 import UserLoginContextStore from "./context/UserLoginContextStore";
 import TasksContextProvider from "./context/TasksContextProvider";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

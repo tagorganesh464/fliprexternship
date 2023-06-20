@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     }
-    .home,.add-task,.user-details{
+    .home{
       background-image: url('../../images/tzokbat_by_hellraidgr_dfjsj65-pre.jpg');
       background-position:center;
       background-repeat: no-repeat;
@@ -13,6 +13,15 @@
     }
     .add-task{
       background-image: url('../../images/img10.jpg');
+      background-position:center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      height: 100%;
+      
+    }
+    .user-details{
+      background-image: url('../../images/2aa78a2c8fbe91b37bfed0fbb32fae82.jpg');
       background-position:center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -38,14 +47,7 @@
       background-attachment: fixed;
       height: 100%;
     }
-    /* .add-task{
-      background-image: url(../../images/img1.jpg);
-      background-position:center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-attachment: fixed;
-      height: 100%;
-    } */
+   
     
     .main{
       min-height: calc(100vh - 55px);

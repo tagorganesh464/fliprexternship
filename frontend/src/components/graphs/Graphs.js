@@ -153,9 +153,9 @@ const getTaskCountsByWeek = () => {
                       filteredTasks.filter((task) => task.taskType === "break").length,
                         filteredTasks.filter((task) => task.taskType === "meeting").length,]}
                         options={{
-                          
+                          colors: ["#ff6384", "#36a2eb", "#ffce56"],
                           noData: { text: "Empty Data" },
-                          labels: ["Working", "Not Working", "Meeting"],
+                          labels: ["Work", "Break", "Meeting"],
                           legend:{
                             position:"bottom"
                           }
@@ -216,11 +216,13 @@ const getTaskCountsByWeek = () => {
                           previousFilteredTasks.filter((task) => task.taskType === "meeting").length,
                         ]}
                         options={{
+                          colors: ["#ff6384", "#36a2eb", "#ffce56"],
+
                            legend:{
                             position:"bottom"
                           },
                           noData: { text: "Empty Data" },
-                          labels: ["Working", "Not Working", "Meeting"],
+                          labels: ["Work", "Break", "Meeting"],
                         }}
                       />
                     </div>
@@ -234,107 +236,119 @@ const getTaskCountsByWeek = () => {
         </div>
       </div>
 
-                    {/* stacked bar chart */}
-                    <div className="stacked-bar-chart-container mt-5">
-      <div className="date-picker">
-        <label htmlFor="date" className="text-white fs-5 px-3 ">
-          Choose your current date:
-        </label>
-        <input
-          type="date"
-          id="date"
-          min={tasks?.jod}
-          max={today.toISOString().split("T")[0]}
-          value={stackDate}
-          onChange={handleStackDateChange}
-          style={{
-            backgroundColor: isDateAvailable(stackDate) ? "#4CAF50" : "#F44336",
-            color: "#fff",
-            padding: "10px",
-            borderRadius: "5px",
-            border: "none",
-            outline: "none",
-            fontWeight: "bold",
-            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
-            transition: "background-color 0.3s ease",
-          }}
-        />
-      </div>
+                   {/* stacked bar chart */}
+<div className="stacked-bar-chart-container mt-5">
+  <div className="date-picker">
+    <label htmlFor="date" className="text-white fs-5 px-3 ">
+      Choose your current date:
+    </label>
+    <input
+      type="date"
+      id="date"
+      min={tasks?.jod}
+      max={today.toISOString().split("T")[0]}
+      value={stackDate}
+      onChange={handleStackDateChange}
+      style={{
+        backgroundColor: isDateAvailable(stackDate) ? "#4CAF50" : "#F44336",
+        color: "#fff",
+        padding: "10px",
+        borderRadius: "5px",
+        border: "none",
+        outline: "none",
+        fontWeight: "bold",
+        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+        transition: "background-color 0.3s ease",
+      }}
+    />
+  </div>
 
-      <div className="stacked-bar mt-5">
-        <React.Fragment>
-          <div className="container-fluid mb-3 text-white">
-            <h2>Stacked bar chart tasks in a week</h2>
-            {noTasksAvailable ? (
-              <p className="text-danger">*No tasks available from current date to previous dates of one week</p>
-            ) : (
-              <Chart
-                type="bar"
-                className="chart1"
-                height={600}
-                series={[
-                  {
-                    name: "Not Working",
-                    data: taskCountsByWeek.map((task) => task.notWorkingCount),
+  <div className="stacked-bar mt-5">
+    <React.Fragment>
+      <div className="container-fluid mb-3 text-white">
+        <h2>Stacked bar chart tasks in a week</h2>
+        {noTasksAvailable ? (
+          <p className="text-danger">*No tasks available from the current date to previous dates of one week</p>
+        ) : (
+          <Chart
+            type="bar"
+            className="chart1"
+            height={600}
+            series={[
+              {
+                name: "Break",
+                data: taskCountsByWeek.map((task) => task.notWorkingCount),
+              },
+              {
+                name: "Work",
+                data: taskCountsByWeek.map((task) => task.workingCount),
+              },
+              {
+                name: "Meeting",
+                data: taskCountsByWeek.map((task) => task.meetingCount),
+              },
+            ]}
+            options={{
+              chart: {
+                stacked: true,
+              },
+              plotOptions: {
+                bar: {
+                  columnWidth: "100%",
+                  borderRadius: 20, // Rounded corners for each bar
+            
+                  
+                },
+                
+              },
+              stroke: {
+                width: 1,
+              },
+              xaxis: {
+                title: {
+                  text: "Tasks done in a week",
+                },
+                categories: taskCountsByWeek.map((task) => task.date),
+              },
+              yaxis: {
+                title: {
+                  text: "Count of taskType",
+                },
+              },
+              legend: {
+                position: "bottom",
+              },
+              dataLabels: {
+                enabled: true,
+                style: {
+                  colors: ["#000000"], // Text color of data labels
+                },
+                dropShadow: {
+                  enabled: false,
+                },
+              },
+              grid: {
+                show: true,
+                xaxis: {
+                  lines: {
+                    show: false,
                   },
-                  {
-                    name: "Working",
-                    data: taskCountsByWeek.map((task) => task.workingCount),
+                },
+                yaxis: {
+                  lines: {
+                    show: false,
                   },
-                  {
-                    name: "Meeting",
-                    data: taskCountsByWeek.map((task) => task.meetingCount),
-                  },
-                ]}
-                options={{
-                  chart: {
-                    stacked: true,
-                  },
-                  plotOptions: {
-                    bar: {
-                      columnWidth: "100%",
-                    },
-                  },
-                  stroke: {
-                    width: 1,
-                  },
-                  xaxis: {
-                    title: {
-                      text: "Tasks done in a week",
-                    },
-                    categories: taskCountsByWeek.map((task) => task.date),
-                  },
-                  yaxis: {
-                    title: {
-                      text: "Count of taskType",
-                    },
-                  },
-                  legend: {
-                    position: "bottom",
-                  },
-                  dataLabels: {
-                    enabled: true,
-                  },
-                  grid: {
-                    show: true,
-                    xaxis: {
-                      lines: {
-                        show: false,
-                      },
-                    },
-                    yaxis: {
-                      lines: {
-                        show: false,
-                      },
-                    },
-                  },
-                }}
-              />
-            )}
-          </div>
-        </React.Fragment>
+                },
+              },
+              colors: ["#ff6f00", "#00c853", "#6200ea"],
+            }}
+          />
+        )}
       </div>
-    </div>
+    </React.Fragment>
+  </div>
+</div>
+
 
     </div>
   );

@@ -251,10 +251,10 @@ console.log(formattedEndTime,formattedStartTime)
                       </p>
                     )}
                   </div>
-                  <div className="inputbox form-floating py-0 for-padding">
+                  <div className="inputbox form-floating py-0 for-padding text-dark">
                   
                     <select
-                      className="form-select py-0 "
+                      className="form-select py-0 text-dark"
                       defaultValue=""
                       {...register("taskType", { required: true })}
                     >

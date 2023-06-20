@@ -3,9 +3,11 @@ import React, { useContext } from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { loginContext } from "../../context/loginContext";
-import "./navbar.css";
-import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
+import "./navbar.css";
+import { BiMenu } from "react-icons/bi"; // Replace with the icon component you want to use
+
+import { Link } from "react-router-dom";
 function NavbarMain() {
   let [currentUser, error, userLoginStatus, loginUser, logoutUser, role] =
     useContext(loginContext);
@@ -16,12 +18,15 @@ function NavbarMain() {
         <div>
           <Link className="nav-link" to="/">
             {" "}
-            <div>
+           <div>
       <FaHome size={32} />
     </div>
           </Link>
         </div>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav">
+  <BiMenu size={24} /> {/* Replace with your desired icon or text */}
+</Navbar.Toggle>
+
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto  ">
             <ul className="navbar-nav menu ms-auto text-decoration-none">
@@ -58,8 +63,9 @@ function NavbarMain() {
                 </li>
               )}
 
-              {userLoginStatus && role == "admin" ? (
+              {userLoginStatus && role === "admin" ? (
                 <ul className="navbar-nav menu ms-auto text-decoration-none">
+                   
                   <li className="nav-item dropdown">
                     <Link
                       className="nav-link text-white"
@@ -78,6 +84,7 @@ function NavbarMain() {
                       Employees
                     </Link>
                   </li>
+                
                 </ul>
               ) : (
                 userLoginStatus && (
@@ -106,7 +113,7 @@ function NavbarMain() {
                         style={{ padding: "1.3rem" }}
                         to="/emp-profile"
                       >
-                        My Profile
+                        Profile
                       </Link>
                     </li>
                   </ul>

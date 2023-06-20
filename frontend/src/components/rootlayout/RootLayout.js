@@ -1,6 +1,5 @@
 import React from 'react'
 import NavbarMain from "../navbar/NavbarMain"
-import Footer from "../footer/Footer"
 import { Outlet } from 'react-router-dom'
 import { useEffect,useState } from 'react'
 import { useLocation } from "react-router-dom";
@@ -24,18 +23,10 @@ function RootLayout() {
     <div className="head">
     <NavbarMain/>
     </div>
-    
-
     {/* placeholder */}
     <div className="main">
       <Outlet />
     </div>
-    <div style={{marginTop:"auto"}}>
-     <Footer/>
-     </div>
-    
-     
-    
   </div>
   )
 }
