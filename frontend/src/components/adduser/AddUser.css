@@ -30,17 +30,7 @@
   background-size: cover;
 } */ 
 
-.add-user-container {
-  padding: 1.5rem;
-  height: 620px;
-  
-  border: 2px solid rgba(255, 255, 255, 0.7);
-  border-radius: 20px;
-  backdrop-filter: blur(20px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .navi-4{
   width: 20rem;
@@ -62,7 +52,7 @@
 .rainbow {
 	position: relative;
 	z-index: 0;
-	width: 480px;
+	width: 500px;
 	height: 650px;
   backdrop-filter: blur(3rem);
   
