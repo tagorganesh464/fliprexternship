@@ -62,7 +62,7 @@
 .rainbow {
 	position: relative;
 	z-index: 0;
-	width: 500px;
+	width: 480px;
 	height: 650px;
   backdrop-filter: blur(3rem);
   
