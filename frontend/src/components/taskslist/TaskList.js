@@ -2,9 +2,11 @@ import { taskContext } from "../../context/TasksContextProvider";
 import React from "react";
 import { useState, useEffect, useContext } from "react";
 import { loginContext } from "../../context/loginContext";
+import {domainContext} from "../../context/DomainContextProvider"
 import axios from "axios";
 import "./TaskList.css"
 const TaskList = () => {
+  let [domain,setDomain]=useContext(domainContext)
     let [error, setError] = useState("");
     let token = sessionStorage.getItem("token");
     let [currentUser, err, userLoginStatus, loginUser, logoutUser, role] =
@@ -54,7 +56,7 @@ const TaskList = () => {
 
   const getUsers = () => {
     axios
-      .get(`http://localhost:5000/user-api/get-user/${currentUser.email}`, {
+      .get(`${domain}/user-api/get-user/${currentUser.email}`, {
         headers: { Authorization: "Bearer " + token },
       })
       .then((response) => {

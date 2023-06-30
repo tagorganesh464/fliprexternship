@@ -1,5 +1,6 @@
 import React from 'react'
 import NavbarMain from "../navbar/NavbarMain"
+import { domainContext } from "../../context/DomainContextProvider";
 import { Outlet } from 'react-router-dom'
 import { useEffect,useState } from 'react'
 import { useLocation } from "react-router-dom";
@@ -15,6 +16,13 @@ function RootLayout() {
   else{
    setPath(url)
   }
+ },[location])
+ let [domain,setDomain]=useContext(domainContext)
+ useEffect(()=>{
+   let url=window.location.href;
+   let baseURL = url.split("/").slice(0, 3).join("/")
+   setDomain(baseURL.replace("://","://server."))
+   console.log(domain)
  },[location])
   return (
     <div

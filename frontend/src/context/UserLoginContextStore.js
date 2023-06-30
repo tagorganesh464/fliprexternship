@@ -6,9 +6,12 @@ function UserLoginContextStore({children}){
     let[role,setRole]=useState("")
     let[error,setError]=useState("")
     let[userLoginStatus,setUserLoginStatus]=useState(false)
+    let url=window.location.href;
+    let baseURL = url.split("/").slice(0, 3).join("/")
+    let subdomain=baseURL.replace("://","://server.")
     // userlogin 
     const loginUser=(userCredObj)=>{
-        axios.post("http://localhost:5000/user-api/user-login",userCredObj)
+        axios.post(`${subdomain}/user-api/user-login`,userCredObj)
         .then(response=>{
             if(response.data.message==="success"){
                 setCurrentUser({...response.data.user})

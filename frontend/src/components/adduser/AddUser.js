@@ -14,18 +14,20 @@ import {
 } from 'mdb-react-ui-kit';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import './AddUser.css';
+import { domainContext } from "../../context/DomainContextProvider";
 import img from '../../images/photo-1684194952323-332460c595e2.avif'
 
 const AddUser = () => {
   const [error, setError] = useState('');
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
+  let [domain,setDomain]=useContext(domainContext)
 
   const formSubmit = (newUser) => {
     newUser = { ...newUser, role: "employee", tasks: [] };
 
     axios
-      .post('http://localhost:5000/user-api/add-user', newUser)
+      .post(`${domain}/user-api/add-user`, newUser)
       .then((response) => {
         if (response.status === 201) {
           navigate('/users');

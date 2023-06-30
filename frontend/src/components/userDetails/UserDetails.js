@@ -5,10 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import Graphs from '../graphs/Graphs';
 import "./UserDetails.css"
 import axios from "axios";
+import {domainContext} from "../../context/DomainContextProvider"
 import TaskList from '../taskslist/TaskList'
 
 function UserDetails() {
   const navigate = useNavigate();
+  let [domain,setDomain]=useContext(domainContext)
   let [error, setError] = useState("");
   let token = sessionStorage.getItem("token");
   
@@ -60,7 +62,7 @@ function UserDetails() {
 
   const getUsers = () => {
     axios
-      .get(`http://localhost:5000/user-api/get-user/${tasks?.email}`, {
+      .get(`${domain}/user-api/get-user/${tasks?.email}`, {
         headers: { Authorization: "Bearer " + token },
       })
       .then((response) => {
