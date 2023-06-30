@@ -4,6 +4,7 @@ import { domainContext } from "../../context/DomainContextProvider";
 import { Outlet } from 'react-router-dom'
 import { useEffect,useState } from 'react'
 import { useLocation } from "react-router-dom";
+import { useContext } from 'react';
 import './RootLayOut.css'
 function RootLayout() {
   let location=useLocation();

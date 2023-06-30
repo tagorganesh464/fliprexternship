@@ -15,25 +15,22 @@ userapp.get("/get-users",verifytoken,expressAsyncHandler(async(request,response)
    response.status(200).send({message:"users list",payload:users})
     
   }))
-  userapp.get("/get-user/:email",verifytoken,expressAsyncHandler(async(request,response)=>{
+
+userapp.get("/get-user/:email",verifytoken,expressAsyncHandler(async(request,response)=>{
     // get usercollection
     const userCollection=request.app.get("userCollection")
   let userObj=await userCollection.findOne({email:(request.params.email)})
   response.status(200).send({message:"user list",payload:userObj})
   }))
 
-// userapp.get("/get-user/:username",verifytoken,expressAsyncHandler(async(request,response)=>{
-//     // get usercollection
-//     const userCollection=request.app.get("userCollection")
-//   let userObj=await userCollection.findOne({username:(request.params.username)})
-//   response.status(200).send({message:"user list",payload:userObj})
-//   }))
+  
   userapp.get("/get-emp/:email",verifytoken,expressAsyncHandler(async(request,response)=>{
     // get usercollection
     const userCollection=request.app.get("userCollection")
   let userObj=await userCollection.findOne({email:(request.params.email)})
   response.status(200).send({message:"user list",payload:userObj})
   }))
+
 
 
 
@@ -51,7 +48,8 @@ userapp.post("/create-user",verifytoken,expressAsyncHandler(async(request,respon
   
   
   }))
-  userapp.put("/update-task/:email",verifytoken,expressAsyncHandler(async(request,response)=>{
+
+userapp.put("/update-task/:email",verifytoken,expressAsyncHandler(async(request,response)=>{
  
     // get userCollection
     const userCollection=request.app.get("userCollection")
@@ -60,44 +58,7 @@ userapp.post("/create-user",verifytoken,expressAsyncHandler(async(request,respon
       response.status(200).send({message:"task has been added successfully"})
     
   }))
-
-// userapp.put("/update-task/:username",verifytoken,expressAsyncHandler(async(request,response)=>{
- 
-//     // get userCollection
-//     const userCollection=request.app.get("userCollection")
-//     let task=request.body;
-//      await userCollection.updateOne({username:(request.params.username)},{$addToSet:{tasks:task}})
-//       response.status(200).send({message:"task has been added successfully"})
-    
-//   }))
-  // userapp.put("/update-user/:username", verifytoken, expressAsyncHandler(async (req, res) => {
-  //   // Get usersCollectionObj
-  //   let userCollection = req.app.get("userCollection");
-  //   // Get username from URL
-  //   console.log(req.params);
-  //   let usernameOfUrl = req.params.username;
-  //   console.log(usernameOfUrl);
-  //   // Get modified user from client
-  //   let modifiedUser = req.body;
-  //   let hashedPassword= await bcryptjs.hash(modifiedUser.password,6)
-  //         modifiedUser.password=hashedPassword;
-  //   delete modifiedUser.name;
-  //   console.log(modifiedUser);
-  //   // Update
-  //   let userObj = await userCollection.findOne({ username: usernameOfUrl });
-  //   console.log(userObj);
-  //   await userCollection.updateOne(
-  //     { username: usernameOfUrl },
-  //     {
-  //       $set: {
-  //         ...modifiedUser,
-  //       },
-  //     }
-  //   );
-  //   // Send response
-  //   res.send({ message: "User update success" });
-  // }));
-  userapp.delete("/delete-user/:email",verifytoken,expressAsyncHandler(async(request,response)=>{
+userapp.delete("/delete-user/:email",verifytoken,expressAsyncHandler(async(request,response)=>{
    
     // get userCollection
    const userCollection=request.app.get("userCollection")
@@ -107,19 +68,6 @@ userapp.post("/create-user",verifytoken,expressAsyncHandler(async(request,respon
    
     
   }))
-  
-  
-  
-// userapp.delete("/delete-user/:username",verifytoken,expressAsyncHandler(async(request,response)=>{
-   
-//     // get userCollection
-//    const userCollection=request.app.get("userCollection")
-//      await userCollection.deleteOne({username:request.params.username})
-    
-//       response.status(200).send({message:"user has been deleted successfully"})
-   
-    
-//   }))
 
 
 userapp.use(exp.json())
@@ -176,13 +124,14 @@ userapp.post('/user-login',expressAsyncHandler(async(request,response)=>{
    //if passwords matched
    else{
      //create a JWT token
-       let jwtToken=jwt.sign({username:userOfDB.username},'123456789',{expiresIn:"1d"})
+       let jwtToken=jwt.sign({username:userOfDB.username},'abcdef',{expiresIn:"1d"})
      //send token in response
      response.status(200).send({message:"success",token:jwtToken,user:userOfDB})
    }
   }
  
 }))
+
 // employee edit profile api
 
 
@@ -195,8 +144,6 @@ userapp.put("/update-user",verifytoken,expressAsyncHandler(async(request,respons
      await userCollection.updateOne({email:modifieduser.email},{$set:{...modifieduser}})
       response.status(200).send({message:"user has been modified successfully"})
 }))
-
-
 
 
 

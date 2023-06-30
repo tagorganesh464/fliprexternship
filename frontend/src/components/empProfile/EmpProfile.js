@@ -79,7 +79,7 @@ const EmpProfile = () => {
 
      
       axios
-        .put(`${domain}/user-api/update-user`, modifieduser, {
+        .put(`${domain}/user-api/update-user`, modifiedUser, {
           headers: { Authorization: "Bearer " + token },
         })
         .then((response) => {
