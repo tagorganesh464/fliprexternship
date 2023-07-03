@@ -15,7 +15,7 @@ const verifyToken=(request,response,next)=>{
         const token=bearerToken.split(" ")[1]
        // verify token using secret key
        try{
-        jwt.verify(token,"123456789");
+        jwt.verify(token,"abcdef");
         next();
        }
        catch(err){
